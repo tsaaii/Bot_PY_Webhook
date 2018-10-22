@@ -74,14 +74,4 @@ table_dept_Deli=new16[['POG Category','Department']]
 table_dept_Tobacconists=new17[['POG Category','Department']]
 table_dept_Cosmetics=new18[['POG Category','Department']]
 
-
-
-
-
-
-
-
-print(table_dept_Apparel.count())
-
-
-print(table_dept_HMR)
+#tables look good
