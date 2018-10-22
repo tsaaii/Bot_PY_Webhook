@@ -75,3 +75,4 @@ table_dept_Tobacconists=new17[['POG Category','Department']]
 table_dept_Cosmetics=new18[['POG Category','Department']]
 
 #tables look good. each and every department has its own tables
+#tables look good
