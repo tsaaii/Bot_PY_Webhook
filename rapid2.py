@@ -30,6 +30,8 @@ table_article_numbers['Article Descripton'][0]='$10 BREADED SWISS CHKN BREAST'
 table_planograms=x1['Planogram Name'].drop_duplicates()
 table_Category=x1['POG Category'].drop_duplicates()
 table_departments=x2['Department'].drop_duplicates()
+table_dept=x2[['Department','POG Category']]
+table_dept_test=table_dept.dropna()
 
 #some processing to have categories department wise
 
@@ -95,18 +97,24 @@ def makeWebhookResult(req):
     result = req.get("result")
     parameters = result.get("parameters")
     zone = parameters.get("")
-    
+    print(parameters)
     if req.get("result").get("action") == "sup":
-       
-        speech = 'Hi'
+        #speech = 'Hijaclknf'
+        x=req.get("result").get("parameters").get("item")
+        print(x)
+        x=x.upper()
+        #look up for x and return x with description and department name.
+        #look for the name in all the columns like POG and brands and give them an option.
+        y=table_dept_test[table_dept_test['POG Category'].str.contains(x)]
+        y.drop_duplicates()
+        speech =y.to_json()
+        print(speech)
         print("Response:", speech)
-
         return {
-            "speech": modified,
-            "displayText": modified,
+            "speech": speech,
+            "displayText": speech,
             "data": {},
-            "contextOut": [],
-            
+            "contextOut": [],      
         }
     else:
         return{"displayText": "I dont know what you are talking about"}
